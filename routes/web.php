@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Index\IndexController@welcome');
+Route::get('/index', 'Index\IndexController@index');
+Route::get('/login', 'Index\IndexController@login');
+Route::group(['namespace' => 'OAuth'], function (){
+    // github
+   Route::get('/github/login', 'GithubController@login');
+   Route::get('/github/callback', 'GithubController@callback');
 });
