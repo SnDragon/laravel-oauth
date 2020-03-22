@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\ClientManager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('oauth.manager', function ($app){
+           return new ClientManager($app);
+        });
+
+        $this->app->singleton('http.client', function() {
+            return new \GuzzleHttp\Client();
+        });
     }
 }

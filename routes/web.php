@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Index\IndexController@welcome');
-Route::get('/index', 'Index\IndexController@index');
-Route::get('/login', 'Index\IndexController@login');
+Route::group(['namespace' => 'Index'], function(){
+//    Route::get('/', 'IndexController@welcome');
+    Route::get('/', 'IndexController@index');
+    Route::get('/login', 'IndexController@login');
+    Route::get('/logout', 'IndexController@logout');
+});
+
 Route::group(['namespace' => 'OAuth'], function (){
     // github
    Route::get('/github/login', 'GithubController@login');

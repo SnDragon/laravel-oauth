@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Index;
 
+use Illuminate\Http\Request;
+
 class IndexController
 {
     public function welcome()
@@ -14,8 +16,23 @@ class IndexController
         return view('login');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return json_response(0, 'success');
+        if(!$this->isLogin($request)){
+            return redirect('login');
+        }else{
+            $info = $request->session()->get('user_info');
+            return view('index', $info);
+        }
+    }
+
+    public function logout(Request $request){
+        $request->session()->flush();
+        $request->session()->regenerate(true);
+        return redirect('/login');
+    }
+
+    protected function isLogin(Request $request){
+        return !empty($request->session()->get('user_info'));
     }
 }
