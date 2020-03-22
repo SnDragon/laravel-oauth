@@ -2,14 +2,11 @@
 
 namespace App\Support;
 
-use Illuminate\Support\Facades\Log;
-
 class GithubClient extends Client
 {
     const AUTHORIZE_URL = 'https://github.com/login/oauth/authorize';
     const GET_TOKEN_URL = 'https://github.com/login/oauth/access_token';
     const GET_USER_INFO_URL = 'https://api.github.com/user';
-
 
     /**
      * 获取用户信息

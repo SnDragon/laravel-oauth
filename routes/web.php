@@ -22,4 +22,7 @@ Route::group(['namespace' => 'OAuth'], function () {
     // 微博
     Route::get('/weibo/login', 'WeiboController@login');
     Route::get('/weibo/callback', 'WeiboController@callback');
+    // QQ
+    Route::get('/qq/login', 'QQController@login');
+    Route::get('/qq/callback', 'QQController@callback');
 });

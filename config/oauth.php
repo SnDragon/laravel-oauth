@@ -9,5 +9,10 @@ return [
         'client_id'     => env('WEIBO_CLIENT_ID'),
         'client_secret' => env('WEIBO_CLIENT_SECRET'),
         'redirect_uri'  => env('WEIBO_CALLBACK_URL')
-    ]
+    ],
+    'qq' => [
+        'client_id'     => env('QQ_CLIENT_ID'),
+        'client_secret' => env('QQ_CLIENT_SECRET'),
+        'redirect_uri'  => env('QQ_CALLBACK_URL')
+    ],
 ];

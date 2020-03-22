@@ -25,4 +25,9 @@ class ClientManager extends Manager
     {
         return new WeiboClient($this->app->config['oauth.weibo']);
     }
+
+    public function createQQDriver()
+    {
+        return new QQClient($this->app->config['oauth.qq']);
+    }
 }
