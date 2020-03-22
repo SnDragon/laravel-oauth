@@ -5,8 +5,8 @@ namespace App\Support;
 class QQClient extends Client
 {
     const AUTHORIZE_URL = 'https://graph.qq.com/oauth2.0/authorize';
-    const GET_TOKEN_URL = 'https://github.com/login/oauth/access_token';
-    const GET_USER_INFO_URL = 'https://api.github.com/user';
+//    const GET_TOKEN_URL = 'https://github.com/login/oauth/access_token';
+//    const GET_USER_INFO_URL = 'https://api.github.com/user';
 
     protected function getAuthorizeUrl()
     {
