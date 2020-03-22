@@ -20,4 +20,9 @@ class ClientManager extends Manager
     {
         return new GithubClient($this->app->config['oauth.github']);
     }
+
+    public function createWeiboDriver()
+    {
+        return new WeiboClient($this->app->config['oauth.weibo']);
+    }
 }

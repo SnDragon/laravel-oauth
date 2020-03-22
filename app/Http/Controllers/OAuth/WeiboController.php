@@ -7,14 +7,14 @@ use App\Support\OAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class GithubController extends Controller
+class WeiboController extends Controller
 {
     /**
-     * 返回github登录页
+     * 返回微博登录页
      */
     public function login(Request $request)
     {
-        $loginUrl = OAuth::driver('github')->getLoginUrl($request);
+        $loginUrl = OAuth::driver('weibo')->getLoginUrl($request);
         return redirect($loginUrl);
     }
 
@@ -27,16 +27,12 @@ class GithubController extends Controller
             'code'  => 'required',
             'state' => 'required',
         ]);
-
-        $driver = OAuth::driver('github');
+        $driver = OAuth::driver('weibo');
         try{
-            $data  = $driver->getAccessToken($request);
-            $token = $data['access_token'];
-            $info  = $driver->getUserInfo($token);
-//            $request->session()->put('oauth_token', $token);
-//            $request->session()->put('login_type', 'github');
-            $info['login_type'] = 'github';
-            $info['oauth_token'] = $token;
+            $data = $driver->getAccessToken($request);
+            $info  = $driver->getUserInfo($data);
+            $info['login_type'] = 'weibo';
+            $info['oauth_token'] = $data['access_token'];
             $request->session()->put('user_info', $info);
             return redirect('/');
         } catch (\Exception $e){
