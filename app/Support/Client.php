@@ -32,6 +32,7 @@ abstract class Client
         ];
         // 保存state到session中,后续跟回调过来的state做对比,防止CSRF攻击
         $request->session()->put('oauth_state', $state);
+        Log::debug(__METHOD__,[ 'state' => $state, 'session_state' => $request->session()->get('oauth_state')]);
         $loginUrl = $this->getAuthorizeUrl() . '?' . http_build_query($params);
         return $loginUrl;
     }
@@ -44,23 +45,21 @@ abstract class Client
      * 获取Access Token
      */
     public function getAccessToken($request){
+        Log::debug(__METHOD__, ['state' => $request->state, 'session_state' =>  $request->session()->get('oauth_state')]);
         if ($request->state != $request->session()->get('oauth_state')) {
-            return new \RuntimeException('state not match');
+            throw new \RuntimeException('state not match');
         }
-        $code = $request->code;
         // 获取ACCESS_TOKEN
-        $params   = [
-            'code'          => $code,
+        $params = [
+            'code'          => $request->code,
             'client_id'     => $this->config['client_id'],
             'client_secret' => $this->config['client_secret']
-        ];
+        ];;
         $url = $this->getAccessTokenUrl($params);
-        $response = $this->getHttpClient()->request('POST', $url, [
-            'headers' => ['Accept' => 'application/json']
-        ]);
-        $ret      = json_decode($response->getBody(), true);
+        $response = $this->requestAccessToken($url);
+        $ret      = $this->parseResponse($response);
         if (!$ret || !isset($ret['access_token'])) {
-            return new \RuntimeException('获取access token失败');
+            throw new \RuntimeException('获取access token失败');
         }
         Log::debug(__METHOD__, ['ret' => $ret]);
         return $ret;
@@ -71,5 +70,17 @@ abstract class Client
      */
     public abstract function getUserInfo($token);
 
+    protected function parseResponse($response)
+    {
+        return json_decode($response, true);
+    }
 
+    protected function requestAccessToken($url)
+    {
+        Log::debug(__METHOD__, ['url' => $url]);
+        $response = $this->getHttpClient()->request('POST', $url, [
+            'headers' => ['Accept' => 'application/json']
+        ]);
+        return $response->getBody();
+    }
 }

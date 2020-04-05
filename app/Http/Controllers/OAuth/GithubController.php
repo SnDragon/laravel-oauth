@@ -27,19 +27,16 @@ class GithubController extends Controller
             'code'  => 'required',
             'state' => 'required',
         ]);
-
         $driver = OAuth::driver('github');
-        try{
-            $data  = $driver->getAccessToken($request);
-            $token = $data['access_token'];
-            $info  = $driver->getUserInfo($token);
-//            $request->session()->put('oauth_token', $token);
-//            $request->session()->put('login_type', 'github');
-            $info['login_type'] = 'github';
+        try {
+            $data                = $driver->getAccessToken($request);
+            $token               = $data['access_token'];
+            $info                = $driver->getUserInfo($token);
+            $info['login_type']  = 'github';
             $info['oauth_token'] = $token;
             $request->session()->put('user_info', $info);
             return redirect('/');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
             return json_response(-1, $e->getMessage() ?: 'error');
         }
