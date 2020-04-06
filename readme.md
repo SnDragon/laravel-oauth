@@ -131,14 +131,16 @@ QQ_CALLBACK_URL=
 
 ## 微信接入
 
+[开发文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
+
+
 1. 应用申请
 
 微信授权登录分两种:公众平台和开放平台,其中开放平台一般是给企业申请的，需要上传营业执照啥的，不适合个人开发者开发学习,而公众平台又分两种,订阅号和服务号,服务号一般也是给企业申请的,但订阅号又无法开通网页授权获取用户信息功能。
+
 好在微信考虑到申请流程可能比较麻烦,为方便开发者,提供了一个沙盒环境,开发者可以在[这里](http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)申请微信公众平台测试账号并进行开发
 
 ![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat1.png)
-
-[开发文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
 
 
 2. 回调域名配置
@@ -168,12 +170,14 @@ charlse配置:
 ![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/charlse_proxy.png )
 
 手机配置(以苹果手机为例):
-无线局域网-点击连着的wifi-最底下配置代理改为手动,服务器填电脑的IP,端口田上面charlse配置的端口:
+无线局域网-点击连着的wifi-最底下配置代理改为手动,服务器填电脑的IP,端口填上面charlse配置的端口:
+
 ![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/charlse2.png )
 
 配置完成后手机应该就可以正常访问我们的虚拟站点了。
 
 用微信打开我们的网站,点微信登录:
+
 ![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat3.png )
 
 
