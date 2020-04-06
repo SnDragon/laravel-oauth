@@ -1,4 +1,4 @@
-# 基于Laravel+OAuth2.0实现Github/微博/QQ/微信登录
+# 基于Laravel5.5+OAuth2.0实现Github/微博/QQ/微信登录
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"><img src="https://oauth.net/images/oauth-logo-square.png"></p>
 
 [OAuth2.0](https://en.wikipedia.org/wiki/OAuth)是目前业界关于授权的标准协议,使用OAuth,用户可以授权第三方应用获取一些特定的权限而无需输入相应的账号密码，并且可随时收回权限。例如我们常见的QQ登录/微信登录等,背后都采用了OAuth2.0协议。
