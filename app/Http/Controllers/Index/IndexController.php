@@ -8,7 +8,8 @@ class IndexController
 {
     public function welcome()
     {
-        return view('welcome');
+//        return view('welcome');
+        return json_response(0,'success');
     }
 
     public function login()

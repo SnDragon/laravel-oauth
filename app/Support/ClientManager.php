@@ -30,4 +30,8 @@ class ClientManager extends Manager
     {
         return new QQClient($this->app->config['oauth.qq']);
     }
+
+    public function createWechatDriver(){
+        return new WechatClient($this->app->config['oauth.wechat']);
+    }
 }

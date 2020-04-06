@@ -7,33 +7,33 @@ use App\Support\OAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class QQController extends Controller
+class WechatController extends Controller
 {
     /**
-     * 返回QQ登录页
+     * 返回微信登录页
      */
     public function login(Request $request)
     {
-        $loginUrl = OAuth::driver('qq')->getLoginUrl($request);
+        $loginUrl = OAuth::driver('wechat')->getLoginUrl($request);
         return redirect($loginUrl);
     }
 
     /**
-     * 接受授权成功后的回调
+     * 处理回调
      */
     public function callback(Request $request)
     {
+        Log::debug(__METHOD__, ['params' => $request->all()]);
         $this->validate($request, [
             'code'  => 'required',
             'state' => 'required',
         ]);
-        $driver = OAuth::driver('qq');
+        $driver = OAuth::driver('wechat');
         try {
             $data                = $driver->getAccessToken($request);
-            $token               = $data['access_token'];
-            $info                = $driver->getUserInfo($token);
-            $info['login_type']  = 'qq';
-            $info['oauth_token'] = $token;
+            $info                = $driver->getUserInfo($data);
+            $info['login_type']  = 'wechat';
+            $info['oauth_token'] = $data['access_token'];
             $request->session()->put('user_info', $info);
             return redirect('/');
         } catch (\Exception $e) {

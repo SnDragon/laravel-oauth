@@ -54,14 +54,14 @@ abstract class Client
             'code'          => $request->code,
             'client_id'     => $this->config['client_id'],
             'client_secret' => $this->config['client_secret']
-        ];;
+        ];
         $url = $this->getAccessTokenUrl($params);
         $response = $this->requestAccessToken($url);
         $ret      = $this->parseResponse($response);
+        Log::debug(__METHOD__, ['ret' => $ret]);
         if (!$ret || !isset($ret['access_token'])) {
             throw new \RuntimeException('获取access token失败');
         }
-        Log::debug(__METHOD__, ['ret' => $ret]);
         return $ret;
     }
 

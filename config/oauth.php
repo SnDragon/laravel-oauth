@@ -15,4 +15,9 @@ return [
         'client_secret' => env('QQ_CLIENT_SECRET'),
         'redirect_uri'  => env('QQ_CALLBACK_URL')
     ],
+    'wechat' => [
+        'client_id'     => env('WECHAT_CLIENT_ID'),
+        'client_secret' => env('WECHAT_CLIENT_SECRET'),
+        'redirect_uri'  => env('WECHAT_CALLBACK_URL')
+    ],
 ];

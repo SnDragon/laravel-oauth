@@ -10,7 +10,7 @@
 |
 */
 Route::group(['namespace' => 'Index'], function () {
-//    Route::get('/', 'IndexController@welcome');
+    Route::get('/welcome', 'IndexController@welcome');
     Route::get('/', 'IndexController@index');
     Route::get('/login', 'IndexController@login');
     Route::get('/logout', 'IndexController@logout');
@@ -25,4 +25,7 @@ Route::group(['namespace' => 'OAuth'], function () {
     // QQ
     Route::get('/qq/login', 'QQController@login');
     Route::get('/qq/callback', 'QQController@callback');
+    // 微信
+    Route::get('/wechat/login', 'WechatController@login');
+    Route::get('/wechat/callback', 'WechatController@callback');
 });
