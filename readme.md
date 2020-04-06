@@ -52,8 +52,9 @@ server {
 5. 运行nginx
 6. 复制一份`.env.example`到`.env`,并对OAuth的相关配置进行修改
 7. 效果验证
+
 本地访问`http://www.longerwu.com/`(替换为上面配置的域名),若出现如下效果,则运行成功:
-![运行效果](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_start.png)
+![运行效果](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_start.png)
 
 ## Github接入
 Github接入相对来说比较简单，无需审核,可直接创建。
@@ -63,9 +64,9 @@ Github接入相对来说比较简单，无需审核,可直接创建。
 
 打开[这个地址](https://github.com/settings/developers),点击右上角的`New OAuth App`按钮,填入相应信息即可获得`client_id`和`client_secret`
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_github1.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_github1.png)
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_github2.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_github2.png)
 
 2. 将获取到的client_id和client_secret以及回调配置到.env中
 ```
@@ -74,9 +75,9 @@ GITHUB_CLIENT_SECRET=xxx
 GITHUB_CALLBACK_URL=xxx
 ```
 3. 效果验证
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_github3.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_github3.png)
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_github4.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_github4.png)
 
 ## 微博登录
 微博接入稍微麻烦一点,需要填写开发者资料,认证之后才能申请应用。
@@ -86,13 +87,13 @@ GITHUB_CALLBACK_URL=xxx
 2. 申请应用&配置回调
 
 填写应用基本信息:
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_weibo1.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_weibo1.png)
 
 填写应用高级信息(回调):
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_weibo2.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_weibo2.png)
 
 添加测试账号:
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_weibo3.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_weibo3.png)
 
 3. 将获取到的client_id和client_secret以及回调配置到.env中
 ```
@@ -101,13 +102,13 @@ WEIBO_CLIENT_SECRET=xxx
 WEIBO_CALLBACK_URL=xxx
 ```
 4. 效果验证
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_weibo4.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_weibo4.png)
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_weibo5.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_weibo5.png)
 
 ## QQ互联接入
 QQ登录应该说是我们最常用的登录方式之一,以前只需要在QQ互联申请应用,就算没通过审核也可以进行本地开发调试,可惜最近QQ互联开放平台貌似改了策略，只有备过案的网站才能接入OAuth2.0登录了,不知道后续还会不会放开,目前未备案通过的应用会报100008错误:
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_qq1.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_qq1.png)
 
 [开发文档](https://wiki.connect.qq.com/%E5%BC%80%E5%8F%91%E6%94%BB%E7%95%A5_server-side)
 1. [完善开发者资料](https://connect.qq.com/devuser.html#/)
@@ -115,7 +116,7 @@ QQ登录应该说是我们最常用的登录方式之一,以前只需要在QQ互
 
 注意,这一步需要填写网站备案号,所以需要先去备案,备案周期由于需要管局审核,可能会比较长(5个工作日以上),个人开发者主办单位名称填自己的名字,填写完相关信息之后等待审核通过即可(一般是一个工作日)
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_qq2.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_qq2.png)
 
 3. 将获取到的client_id和client_secret以及回调配置到.env中
 ```
@@ -124,9 +125,9 @@ QQ_CLIENT_SECRET=
 QQ_CALLBACK_URL=
 ```
 4. 效果验证
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_qq3.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_qq3.png)
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_qq4.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_qq4.png)
 
 ## 微信接入
 
@@ -135,14 +136,14 @@ QQ_CALLBACK_URL=
 微信授权登录分两种:公众平台和开放平台,其中开放平台一般是给企业申请的，需要上传营业执照啥的，不适合个人开发者开发学习,而公众平台又分两种,订阅号和服务号,服务号一般也是给企业申请的,但订阅号又无法开通网页授权获取用户信息功能。
 好在微信考虑到申请流程可能比较麻烦,为方便开发者,提供了一个沙盒环境,开发者可以在[这里](http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)申请微信公众平台测试账号并进行开发
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_wechat1.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat1.png)
 
 [开发文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
 
 
 2. 回调域名配置
 要想使用微信的OAuth2.0网页授权,我们还需要配置回调域名(注意这里只需填写域名即可,无需填写完整回调地址),找到`网页服务-网页账号-网页授权获取用户基本信息`,点击右边的修改按钮,填入域名即可
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_wechat2.png)
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat2.png)
 
 3. 修改配置
 ```
@@ -164,19 +165,19 @@ charlse配置:
 
 打开`Proxy-Proxy Settings`,默认使用8888端口:
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/charlse_proxy.png )
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/charlse_proxy.png )
 
 手机配置(以苹果手机为例):
 无线局域网-点击连着的wifi-最底下配置代理改为手动,服务器填电脑的IP,端口田上面charlse配置的端口:
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/charlse2.png )
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/charlse2.png )
 
 配置完成后手机应该就可以正常访问我们的虚拟站点了。
 
 用微信打开我们的网站,点微信登录:
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_wechat3.png )
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat3.png )
 
 
-![image](https://longerwu-1252728875.cos.ap-guangzhou.myqcloud.com/oauth_wechat4.png )
+![image](https://raw.githubusercontent.com/SnDragon/laravel-oauth/master/images/oauth_wechat4.png )
 
 ## TODO
 * 代码优化
